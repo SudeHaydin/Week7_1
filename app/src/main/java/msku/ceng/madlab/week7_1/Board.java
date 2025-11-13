@@ -16,6 +16,12 @@ public class Board {
     }
 
     public void move(byte row, byte col){
+
+        if(board[row][col] != 0){
+            boardListener.invalidPlay(row,col);
+            return;
+        }
+
         if(player1Turn){
             board[row][col] = PLAYER_1_SYMBOL;
             boardListener.playedAt(BoardListener.PLAYER_1, row, col);
